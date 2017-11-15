@@ -1,0 +1,91 @@
+.main{
+    height: 100%;
+    width: 100%;
+}
+
+.main > div{
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+
+.main > .left{
+    background: #fff;
+    overflow: auto;
+    transition: all ease .5s;
+}
+
+.main > .right{
+    background: #f9fafb;
+    overflow: auto;
+    transition: all ease .5s;
+}
+
+.right > div, .left > pre, .left >div{
+    margin: 20px 20px 20px 20px;
+}
+
+.left >pre{
+    white-space: pre-wrap;
+}
+
+.left.full{
+    margin-left: -50%;
+    position: unset;
+}
+
+.right.full{
+    width: 100%;
+    overflow: unset;
+    height: auto;
+    min-height: 100%;
+}
+
+.right.full > div{
+    padding: 0 10%;
+}
+
+.full-srceen, .print{
+    width: 50px;
+    height: 30px;
+    position: fixed;
+    top: 0;
+    background-color: rgba(92, 99, 112, 0.58);
+    text-align: center;
+    line-height: 30px;
+    color: #f9fafb;
+    right: 0;
+    opacity: .2;
+    cursor: default;
+}
+.full-srceen:hover,.print:hover{
+    opacity: 1;
+}
+
+.print{
+    right: 60px;
+    padding: 0 !important;
+}
+
+.print.onlyRead{
+    right: 0;
+}
+
+*::-webkit-scrollbar-thumb{
+    background: rgba(0,0,0,0.3);
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+}
+
+*::-webkit-scrollbar{
+    height: 10px;
+    width: 7px;
+    background: transparent;
+}
+
+code::-webkit-scrollbar{
+    height: 5px;
+}
+code::-webkit-scrollbar-thumb{
+    background-color: #5c6370;
+}

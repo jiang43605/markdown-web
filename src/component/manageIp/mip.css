@@ -1,0 +1,33 @@
+.item{
+    display: flex;
+    margin-top: 10px;
+}
+
+
+.item .name{
+    flex: 1;
+    font-size: 20px;
+    color: gray;
+    text-align: center;
+}
+
+.item .cread, .item .cwrite{
+    flex:  1;
+    font-size: 15px;
+    text-align: center;
+}
+
+.list{
+    margin: 20px;
+}
+
+.name.name-title{
+    font-size: 15px;
+    color: black;
+}
+
+.item.item-title{
+    border-bottom-color: green;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
