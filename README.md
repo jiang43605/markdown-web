@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/jiang43605/markdown-web.svg?branch=master)](https://travis-ci.org/jiang43605/markdown-web)
 ---
-> This is a markdown editor site, it is for learning nodejs, and I use it to write diaries and resume    
+> This is a markdown editor site, it is for learning nodejs, and I use it to write diaries and resume  
 > see more details: `./src/js/mainPageInfo.js`
 
 ![](demo.png)
