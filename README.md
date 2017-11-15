@@ -3,6 +3,8 @@
 > This is a markdown editor site, it is for learning nodejs  
 > see more details: `./src/js/mainPageInfo.js`
 
+![](demo.png)
+
 ## nodejs version
 ```
 nodejs 8.0+
@@ -48,5 +50,5 @@ http://localhost:8080/chengf.ok
 // null means: can't access
 ```
 
-markdown syntax analysis: https://github.com/chjj/marked
+markdown syntax analysis: https://github.com/chjj/marked  
 code syntax analysis: https://github.com/isagalaev/highlight.js
