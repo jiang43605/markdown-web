@@ -55,5 +55,20 @@ http://localhost:8080/manage.ok
 // null means: can't access
 ```
 
+**if you only want the react markdown component of this project**
+```
+npm install --save react-easymarkdown
+
+// and use
+function save(){
+    // when user call save command
+}
+ 
+ReactDOM.render(
+    <MarkDown text={'# hello world!'} onSave={save} />,
+    document.getElementById('root')
+)
+```
+
 markdown syntax analysis: https://github.com/chjj/marked  
 code syntax analysis: https://github.com/isagalaev/highlight.js
