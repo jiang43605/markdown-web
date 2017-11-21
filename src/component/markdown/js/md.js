@@ -199,11 +199,11 @@ export default class MarkDown extends React.Component {
     afterPrint() {
         if (this.props.onlyRead !== true) {
             this.refs.preview.style.display = 'block';
-            this.refs.save.style.display = 'block';
 
             if (!this.refs.left.viewMode) {
                 this.refs.left.classList.remove('full');
                 this.refs.right.classList.remove('full');
+                this.refs.save.style.display = 'block';
             }
 
         } else {
