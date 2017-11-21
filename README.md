@@ -17,6 +17,7 @@ git clone https://github.com/jiang43605/markdown-web.git
 npm install
 npm run build
 node server.js
+// open: http://localhost:8080
 ```
 
 ## admin manage url
