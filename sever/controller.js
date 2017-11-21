@@ -5,7 +5,7 @@ const router = require('./router');
 
 const mainPage = fs.readFileSync(Path.resolve(__dirname, '../dist/index.html'));
 const main = Path.resolve(__dirname, '../content/.main');
-let mainData = `${fs.readFileSync(main)}`.replace(/</g, '$lt;').replace(/>/g, '&gt;');
+let mainData = `${fs.readFileSync(main)}`.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 router.add('/', async (ctx) => {
     ctx.response.write(mainPage
@@ -34,7 +34,7 @@ router.add('/api/save', async (ctx) => {
         fs.writeFileSync(main, ctx.request.body.text);
 
         // update cache
-        mainData = `${fs.readFileSync(main)}`.replace(/</g, '$lt;').replace(/>/g, '&gt;');
+        mainData = `${fs.readFileSync(main)}`.replace(/</g, '&lt;').replace(/>/g, '&gt;');
         return;
     }
 
