@@ -42,7 +42,7 @@ export default class App extends React.Component {
             <div style={{ height: '100%' }}>
                 <MarkDown
                     onSave={this.save.bind(this)}
-                    text={this.props.text !== '@text' ? this.props.text : require('./mainPageInfo')} onlyRead={this.props.onlyRead} />
+                    text={this.props.text} onlyRead={this.props.onlyRead} />
                 <SaveInfo
                     opacity={this.state.opacity}
                     info={this.state.info} />

@@ -1,14 +1,17 @@
 const path = require('path');
 const fs = require('fs');
 const url = require('url');
+const crypto = require('crypto');
 
 const defulatContent = path.resolve(__dirname, '../content');
 const resloveExt = Symbol('resloveExt');
+const cache = Symbol('cache');
 
 // uniform resource management, for content
 class Resources {
     constructor(path) {
         this._path = path;
+        this[cache] = new Map();
     }
 
     static init(path = defulatContent) {
@@ -57,12 +60,19 @@ class Resources {
         let file = this.findFile(fileName);
         if (file === false) return false;
 
+        // change the read or write property
+        let ext = path.extname(file);
+
         if (params.length === 1) {
-            // replace data
-            fs.writeFileSync(file, params[0]);
+            // replace data, and must can be write
+            if (ext.includes('w'))
+                fs.writeFileSync(file, params[0]);
+            else return false;
+
+            // update cache
+            if (this[cache].has(fileName))
+                this[cache].set(fileName, Buffer.from(params[0]));
         } else {
-            // change the read or write property
-            let ext = path.extname(file);
             // change read property
             if (params[0] === true) {
                 if (ext.includes('r')) ext = ext.replace('r', '');
@@ -81,13 +91,64 @@ class Resources {
         }
     }
 
+    // force update file
+    forceUpdate(fileName, data) {
+        if (!fileName) return false;
+
+        let file = this.findFile(fileName);
+        if (file === false) return false;
+
+        fs.writeFileSync(file, data);
+
+        if (this[cache].has(fileName))
+            this[cache].set(fileName, Buffer.from(data));
+        return true;
+    }
+
     // delete file
     delete(fileName) {
-        fs.unlinkSync(this.findFile(fileName));
+        const file = this.findFile(fileName);
+        fs.unlinkSync(file);
+
+        // update cache
+        this[cache].delete(path.basename(file));
+    }
+
+    // get file from cache or disk
+    // fileName: chengf(no extention)
+    getFile(fileName) {
+        if (this[cache].has(fileName))
+            return this[cache].get(fileName)
+                .toString('utf-8')
+                .replace(/>/g, '&gt;')
+                .replace(/</g, '&lt;');
+
+        this[cache].set(fileName, fs.readFileSync(this.findFile(fileName)));
+        return this[cache]
+            .get(fileName)
+            .toString('utf-8')
+            .replace(/>/g, '&gt;')
+            .replace(/</g, '&lt;');
     }
 
     get count() {
         return fs.readdirSync(this._path).length;
+    }
+
+    // save image resource
+    saveImage(type, buffer) {
+        const calMd5 = crypto.createHash('md5');
+        calMd5.update(buffer);
+        const name = calMd5.digest('hex') + '.' + type;
+        const imagePath = path.resolve(__dirname, `../image/${name}`);
+
+        try {
+            fs.accessSync(imagePath);
+        } catch (error) {
+            fs.writeFileSync(imagePath, buffer);
+        }
+
+        return name;
     }
 }
 

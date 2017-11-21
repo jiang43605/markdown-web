@@ -4,7 +4,7 @@ import '../css/common.css';
 import App from './app';
 
 
-let text = document.getElementById('text').innerHTML;
+let text = document.getElementById('text').textContent;
 
 ReactDOM.render(
     <App text={text} onlyRead={onlyRead} />,

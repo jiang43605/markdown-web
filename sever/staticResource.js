@@ -9,7 +9,7 @@ module.exports = async (ctx, next) => {
 
     if (allowFlag) {
 
-        switch (path.extname(rawPath.path)) {
+        switch (path.extname(rawPath.path).toLowerCase()) {
             case '.css':
                 ctx.response.setHeader('Content-Type', 'text/css; charset=UTF-8');
                 break;
@@ -21,6 +21,12 @@ module.exports = async (ctx, next) => {
                 break;
             case '.ico':
                 ctx.response.setHeader('Content-Type', 'image/ico');
+                break;
+            case '.png':
+                ctx.response.setHeader('Content-Type', 'image/png');
+                break;
+            case '.jpg':
+                ctx.response.setHeader('Content-Type', 'image/jpeg');
                 break;
             default:
                 break;

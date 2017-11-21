@@ -8,17 +8,19 @@ module.exports = async (ctx, next) => {
 
     const rawUrl = Url.parse(ctx.request.url);
 
-    if (rawUrl.path === '/chengf.ok') {
-        let data = fs.readdirSync(Path.resolve(__dirname, '../content')).map(file => {
-            let name = file.split('.')[0];
-            let ext = file.split('.')[1];
+    if (rawUrl.path === `/${Config.managePagePath}`) {
+        let data = fs.readdirSync(Path.resolve(__dirname, '../content'))
+            .filter(file => file !== '.main')
+            .map(file => {
+                let name = file.split('.')[0];
+                let ext = file.split('.')[1];
 
-            return {
-                name: name,
-                canRead: ext.includes('r'),
-                canWrite: ext.includes('w')
-            }
-        });
+                return {
+                    name: name,
+                    canRead: ext.includes('r'),
+                    canWrite: ext.includes('w')
+                }
+            });
         let stringData = JSON.stringify(data);
 
         let ipData = [];

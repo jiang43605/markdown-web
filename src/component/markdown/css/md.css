@@ -1,51 +1,55 @@
-.main{
+.main {
     height: 100%;
     width: 100%;
 }
 
-.main > div{
+.main>div {
     float: left;
     width: 50%;
     height: 100%;
 }
 
-.main > .left{
+.main>.left {
     background: #fff;
     overflow: auto;
     transition: all ease .5s;
 }
 
-.main > .right{
+.main>.right {
     background: #f9fafb;
     overflow: auto;
     transition: all ease .5s;
 }
 
-.right > div, .left > pre, .left >div{
+.right>div,
+.left>pre,
+.left>div {
     margin: 20px 20px 20px 20px;
 }
 
-.left >pre{
+.left>pre {
     white-space: pre-wrap;
 }
 
-.left.full{
+.left.full {
     margin-left: -50%;
     position: unset;
 }
 
-.right.full{
+.right.full {
     width: 100%;
     overflow: unset;
     height: auto;
     min-height: 100%;
 }
 
-.right.full > div{
+.right.full>div {
+    transition: padding ease .5s;
     padding: 0 10%;
 }
 
-.full-srceen, .print{
+.full-srceen,
+.print {
     width: 50px;
     height: 30px;
     position: fixed;
@@ -58,34 +62,54 @@
     opacity: .2;
     cursor: default;
 }
-.full-srceen:hover,.print:hover{
+
+.full-srceen:hover,
+.print:hover {
     opacity: 1;
 }
 
-.print{
+.print {
     right: 60px;
     padding: 0 !important;
 }
 
-.print.onlyRead{
+.print.onlyRead {
     right: 0;
 }
 
-*::-webkit-scrollbar-thumb{
-    background: rgba(0,0,0,0.3);
+.save {
+    width: 50px;
+    height: 30px;
+    background-color: rgba(92, 99, 112, 0.58);
+    text-align: center;
+    line-height: 30px;
+    color: #f9fafb;
+    opacity: .2;
+    cursor: default;
+    position: fixed;
+    right: 50%;
+}
+
+.save:hover {
+    opacity: 1;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
     -webkit-border-radius: 6px;
     border-radius: 6px;
 }
 
-*::-webkit-scrollbar{
+*::-webkit-scrollbar {
     height: 10px;
     width: 7px;
     background: transparent;
 }
 
-code::-webkit-scrollbar{
+code::-webkit-scrollbar {
     height: 5px;
 }
-code::-webkit-scrollbar-thumb{
+
+code::-webkit-scrollbar-thumb {
     background-color: #5c6370;
 }

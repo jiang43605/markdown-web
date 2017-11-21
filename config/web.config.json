@@ -1,5 +1,8 @@
 {
     "ipMaxCotentFiles": 11,
-    "ips": {
-    }
+    "ips": {},
+    "mainPage": ".main",
+    "managePagePath": "manage.ok",
+    "password": "test.ok",
+    "mainPassword": "admin.ok"
 }

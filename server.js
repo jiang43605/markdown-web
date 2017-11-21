@@ -7,6 +7,8 @@ const Resources = require('./tools/resources');
 const common = require('./sever/common');
 const Config = require('./tools/config');
 
+// const h = require('marked')('<test />');
+
 Config.init();
 Resources.init();
 process.listeners('beforeExit', Config.save);
