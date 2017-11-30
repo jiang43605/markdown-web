@@ -291,7 +291,7 @@ export default class MarkDown extends React.Component {
 
     // user click save button
     save(e){
-        const text = e.target.textContent;
+        const text = this.refs.textInput;
         setTimeout(() => {
             this.props.onSave(text);
         }, 0);
